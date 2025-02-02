@@ -4,7 +4,7 @@ plugins {
 }
 
 group = 'com.maemlab'
-version = '0.1'
+version = '0.2'
 
 repositories {
     mavenCentral()
@@ -64,6 +64,15 @@ jar {
     }
 }
 
+tasks.register('copyToCommis') {
+    dependsOn build
+    doLast {
+        copy {
+            from build
+            into 'c:/workspace/intellij_projects/Commis/lib/'
+        }
+    }
+}
 
 test {
     useJUnitPlatform()
