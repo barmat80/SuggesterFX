@@ -1,89 +1,63 @@
 # SuggesterFX
 
-SuggesterFX is a custom JavaFX widget library that provides enhanced UI components and includes a pure Java port of the DirtyFX library.
-
-## Features
-
-- Custom JavaFX widgets for modern UI development
-- Lightweight and efficient components
-
-## Installation
-
-### Gradle
-
-Add this to your project's `build.gradle`:
-
-```gradle
-dependencies {
-    implementation 'com.your.package:suggesterfx:0.1.0'
-}
-```
-
-### Maven
-
-Add this to your project's `pom.xml`:
-
-```xml
-<dependency>
-    <groupId>com.maemlab</groupId>
-    <artifactId>suggesterfx</artifactId>
-    <version>0.1.0</version>
-</dependency>
-```
-
-## Usage
-
-Here's a simple example of using SuggesterFX in your application:
-
-```java
-// Add code example here showing how to use your most important widget
-```
-
-## Available Widgets
-
-- List your widgets here
-- With brief descriptions
-- And their main use cases
-
-## Requirements
-
-- Java 21 or higher
-- JavaFX 23 or higher
-
-## Building from Source
-
-1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/nexusfx.git
-```
-
-2. Build with Gradle:
-```bash
-cd nexusfx
-./gradlew build
-```
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
-
-## License
-
-[MIT License](LICENSE)
+**SuggesterFX** is a JavaFX lightweight library that provides a suggestion (autocompletion) 
+system for text fields linked to data entries.
+This library integrates with [mvciFX library](https://github.com/barmat80/mvciFX)
+to provide a clean, maintainable architecture for handling suggestions and autocompletion.
 
 ## Credits
 
-NexusFX is developed by Mattia and includes a Java port of the DirtyFX library.
+- Original MVCI framework concept by Dave Barrett ([PragmaticoCoding](https://www.pragmaticcoding.ca)).
+- Built on [ControlsFX](https://github.com/controlsfx) components
+- Autocompletion modifications based on [Clément Grennerat's post](https://github.com/controlsfx/controlsfx/issues/883#issuecomment-1147602490) 
+and his [PDF4Teachers application](https://github.com/ClementGre/PDF4Teachers)
 
-## Support
+## Overview
 
-- Create an issue on GitHub
-- [Optional] Link to documentation
-- [Optional] Link to discussions/community
+SuggesterFX combines JavaFX's text fields with ControlsFX's autocompletion features, 
+wrapped in an MVCI (Model-View-Controller-Interactor) architecture. 
+This makes it easy to implement type-ahead suggestions while maintaining clean separation of concerns.
 
-## Roadmap
+## Features
 
-- [ ] Additional widget implementations
-- [ ] Enhanced documentation
-- [ ] More examples
-- [ ] Performance optimizations
+This library provides the following components:
+- `SuggestionInteractor`: an abstract MVCI Interactor class specialized for suggestions handling
+  - fetches entries based on user input
+  - retrieves text suggestions
+  - manages model updates after suggestion selection
+- `Entry`: an interface representing data entities (such as POJOs) that can be used with 
+    the suggestion system.
+  - Supports composite primary keys
+  - Provides description text for display
+- Suggestion Components:
+  - `EntryConverter`: converts between `Entry` objects and their string representations.
+  - `EntrySelectionHandler`: handles the selection events from auto-completion textfield.
+  It uses the `SuggestionInteractor` to handle what should be done after the operation is completed.
+  - `EntrySuggesterCallback`: a callback backed by the `SuggestionInteractor.fetchEntries(String)` method, 
+  which retrieves entries based on a user's suggestion or partial input.
+  - `StringSuggesterCallback`: a callback backed by to `SuggestionInteractor.fetchNames(String)` method, 
+  which retrieves a list of names matching a user's suggestion or partial input
+
+## ControlsFX autocompletion widgets and classes
+
+The classes in `com.maemlab.suggesterfx.controlsfx.autocompletion` package are taken from ControlsFX.
+They have been repackaged and modified following [Clément Grennerat's post](https://github.com/controlsfx/controlsfx/issues/883#issuecomment-1147602490).
+
+- `impl.textfield.AutoCompletionBinding`:
+  - Removed EventTarget implementation
+  - Simplified `fireAutoCompletion` method: 
+  - Made `isCancelled` and `getUserText` methods public
+  - Removed `invalidated` method
+- `impl.textfield.TextFields`: removed `createClearablePasswordField` method
+- `impl.textfield.AutoCompletionTextFieldBinding`: a little bit of code review
+- `impl.skin.AutoCompletePopupSkin`: removed the default style
+
+# Examples
+
+TODO
+
+## Example 1:
+
+# Contributing
+
+Contributions are welcome! Please feel free to submit a pull request or open an issue.

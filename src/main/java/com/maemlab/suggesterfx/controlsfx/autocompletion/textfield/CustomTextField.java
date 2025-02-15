@@ -24,14 +24,34 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.maemlab.suggesterfx.widgets.autocompletion;
+package com.maemlab.suggesterfx.controlsfx.autocompletion.textfield;
 
+import com.maemlab.suggesterfx.controlsfx.autocompletion.impl.skin.CustomTextFieldSkin;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.Node;
 import javafx.scene.control.Skin;
 import javafx.scene.control.TextField;
 
+/**
+ * A base class for people wanting to customize a {@link TextField} to contain nodes
+ * inside the text field itself, without being on top of the users typed-in text.
+ *
+ * <h3>Screenshot</h3>
+ * <p>The following screenshot is taken from the HelloControlsFX sample application,
+ * and shows a normal TextField, with a {@link TextFields#createClearableTextField() clearable text field},
+ * followed by three CustomTextFields. Note what happens with long text input -
+ * it is prevented from going beneath the left and right graphics. Of course, if
+ * the keyboard caret moves to the right, the text will become visible, but this
+ * is because it will all scroll to the left (as is the case in a normal {@link TextField}).
+ *
+ * <br>
+ * <center>
+ * <img src="customTextField.png" alt="Screenshot of CustomTextField">
+ * </center>
+ *
+ * @see TextFields
+ */
 public class CustomTextField extends TextField {
 
     /**************************************************************************

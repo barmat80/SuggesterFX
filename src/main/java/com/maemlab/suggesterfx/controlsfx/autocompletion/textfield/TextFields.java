@@ -24,9 +24,11 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.maemlab.suggesterfx.widgets.autocompletion;
+package com.maemlab.suggesterfx.controlsfx.autocompletion.textfield;
 
-import com.maemlab.suggesterfx.widgets.autocompletion.AutoCompletionBinding.ISuggestionRequest;
+import com.maemlab.suggesterfx.controlsfx.autocompletion.textfield.AutoCompletionBinding.ISuggestionRequest;
+import com.maemlab.suggesterfx.controlsfx.autocompletion.impl.AutoCompletionTextFieldBinding;
+import com.maemlab.suggesterfx.controlsfx.autocompletion.impl.SuggestionProvider;
 import javafx.animation.FadeTransition;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
@@ -43,6 +45,14 @@ import javafx.util.StringConverter;
 import java.util.Arrays;
 import java.util.Collection;
 
+/**
+ * A class containing useful customizations for the JavaFX {@link TextField}.
+ * Note that this class is experimental and the API may change in future
+ * releases. Note also that this class makes use of the {@link CustomTextField}
+ * class.
+ *
+ * @see CustomTextField
+ */
 public class TextFields {
     private static final Duration FADE_DURATION = Duration.millis(350);
 
@@ -125,10 +135,10 @@ public class TextFields {
      * @param converter The converter to be used to convert suggestions to strings
      */
 	public static <T> AutoCompletionBinding<T> bindAutoCompletion(TextField textField,
-			Callback<ISuggestionRequest, Collection<T>> suggestionProvider,
-			StringConverter<T> converter) {
+                                                                  Callback<ISuggestionRequest, Collection<T>> suggestionProvider,
+                                                                  StringConverter<T> converter) {
 		return new AutoCompletionTextFieldBinding<>(textField,
-				suggestionProvider, converter);
+                                                    suggestionProvider, converter);
 	}    
     
     /**
@@ -163,7 +173,7 @@ public class TextFields {
 	public static <T> AutoCompletionBinding<T> bindAutoCompletion(
 			TextField textField, Collection<T> possibleSuggestions) {
 		return new AutoCompletionTextFieldBinding<>(textField,
-                com.maemlab.suggesterfx.widgets.autocompletion.SuggestionProvider.create(possibleSuggestions));
+                                                    SuggestionProvider.create(possibleSuggestions));
 	}
 }
 

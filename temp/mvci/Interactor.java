@@ -1,7 +1,7 @@
 package com.maemlab.suggesterfx.mvci;
 
 import com.maemlab.suggesterfx.data.beans.Bean;
-import com.maemlab.suggesterfx.data.beans.autocompletion.BeanSuggesterCallback;
+import com.maemlab.suggesterfx.data.beans.suggestion.BeanSuggesterCallback;
 import com.maemlab.suggesterfx.exception.FXException;
 
 import java.beans.Beans;
