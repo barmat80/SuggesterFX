@@ -2,6 +2,7 @@ package com.maemlab.suggesterfx.mvci;
 
 import com.maemlab.mvcifx.exception.MVCIException;
 import com.maemlab.mvcifx.mvci.Interactor;
+import com.maemlab.mvcifx.mvci.Model;
 import com.maemlab.suggesterfx.entries.Entry;
 import com.maemlab.suggesterfx.suggestion.EntrySuggesterCallback;
 
@@ -24,8 +25,26 @@ import java.util.Collection;
  *
  * @see Entry
  * @see EntrySuggesterCallback
+ *
+ * @param <M> The type of Model this controller manages
  */
-public abstract class SuggestionInteractor implements Interactor {
+public abstract class SuggestionInteractor<M extends Model> implements Interactor<M> {
+
+    protected final M model;
+
+    /**
+     * Creates a new SuggestionInteractor instance with the specified model
+     *
+     * @param model The {@link Model} instance
+     * @throws IllegalArgumentException if model parameter is null
+     */
+    public SuggestionInteractor(M model) {
+        if (model == null) {
+            throw new IllegalArgumentException("Model must not be null");
+        }
+        this.model = model;
+    }
+
     /**
      * Retrieves entries based on a user's suggestion or partial input.
      * <p>Typically, is used in combination with {@link EntrySuggesterCallback} and it's called when users type in an autocomplete field,

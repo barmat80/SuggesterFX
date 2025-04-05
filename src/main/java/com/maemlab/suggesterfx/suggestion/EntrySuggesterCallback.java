@@ -1,6 +1,7 @@
 package com.maemlab.suggesterfx.suggestion;
 
 import com.maemlab.mvcifx.exception.MVCIException;
+import com.maemlab.mvcifx.mvci.Model;
 import com.maemlab.suggesterfx.entries.Entry;
 import com.maemlab.suggesterfx.mvci.SuggestionInteractor;
 import com.maemlab.suggesterfx.controlsfx.autocompletion.textfield.AutoCompletionBinding;
@@ -10,21 +11,26 @@ import java.util.Collection;
 
 /**
  * Provides {@link Entry} suggestions for auto-completion text fields based on user input.
- * This callback fetches relevant {@link Entry} suggestions through a {@link SuggestionInteractor}
+ * <p>This callback fetches relevant {@link Entry} suggestions through a {@link SuggestionInteractor}
  * when users type in an auto-completion-enabled text field.
  *
  * <p>The callback converts user input into a collection of matching {@link Entry} objects
  * that can be displayed as suggestions in the auto-completion popup.
+ *
+ * @param <M> The type of {@link Model} this handler uses
+ *
+ * @see Model
+ * @see SuggestionInteractor
  */
-public class EntrySuggesterCallback implements Callback<AutoCompletionBinding.ISuggestionRequest, Collection<Entry>> {
-    private final SuggestionInteractor interactor;
+public class EntrySuggesterCallback<M extends Model> implements Callback<AutoCompletionBinding.ISuggestionRequest, Collection<Entry>> {
+    private final SuggestionInteractor<M> interactor;
 
     /**
      * Creates a new EntrySuggesterCallback with the specified interactor.
      *
      * @param interactor The {@link SuggestionInteractor} that will fetch {@link Entry} suggestions
      */
-    public EntrySuggesterCallback(SuggestionInteractor interactor) {
+    public EntrySuggesterCallback(SuggestionInteractor<M> interactor) {
         this.interactor = interactor;
     }
 

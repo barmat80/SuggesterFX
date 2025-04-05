@@ -1,5 +1,6 @@
 package com.maemlab.suggesterfx.suggestion;
 
+import com.maemlab.mvcifx.mvci.Model;
 import com.maemlab.suggesterfx.entries.Entry;
 import com.maemlab.suggesterfx.controlsfx.autocompletion.textfield.AutoCompletionBinding;
 import com.maemlab.suggesterfx.mvci.SuggestionInteractor;
@@ -7,23 +8,28 @@ import javafx.event.EventHandler;
 
 /**
  * Handles selection events from auto-completion text fields for {@link Entry} objects.
- * This handler processes the selection of {@link Entry} suggestions and updates the underlying
- * model through the {@link SuggestionInteractor}.
+ * <p>This handler processes the selection of {@link Entry} suggestions and updates the underlying
+ * {@link Model} through a {@link SuggestionInteractor}.
  *
  * <p>When a user selects a suggestion from the auto-completion list, this handler
  * ensures that the selected {@link Entry} is properly processed and the model is updated
  * accordingly through the interactor.
+ *
+ * @param <M> The type of {@link Model} this handler uses
+ *
+ * @see Model
+ * @see SuggestionInteractor
  */
-public class EntrySelectionHandler implements EventHandler<AutoCompletionBinding.AutoCompletionEvent<Entry>> {
+public class EntrySelectionHandler<M extends Model> implements EventHandler<AutoCompletionBinding.AutoCompletionEvent<Entry>> {
 
-    private final SuggestionInteractor interactor;
+    private final SuggestionInteractor<M> interactor;
 
     /**
      * Creates a new EntrySelectionHandler with the specified interactor.
      *
      * @param interactor The {@link SuggestionInteractor} that will process selected entries
      */
-    public EntrySelectionHandler(SuggestionInteractor interactor) {
+    public EntrySelectionHandler(SuggestionInteractor<M> interactor) {
         this.interactor = interactor;
     }
 
