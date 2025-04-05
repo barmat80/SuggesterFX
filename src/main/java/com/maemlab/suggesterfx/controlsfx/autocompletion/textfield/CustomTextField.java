@@ -79,18 +79,16 @@ public class CustomTextField extends TextField {
     
     
     /**************************************************************************
-     * 
      * Properties
      * 
      **************************************************************************/
     
-    // --- left
     private ObjectProperty<Node> left = new SimpleObjectProperty<>(this, "left"); //$NON-NLS-1$
     
     /**
      * 
      * @return An ObjectProperty wrapping the {@link Node} that is placed 
-     * on the left ofthe text field.
+     * on the left of the text field.
      */
     public final ObjectProperty<Node> leftProperty() {
         return left;
