@@ -10,9 +10,9 @@ import javafx.util.Callback;
 import java.util.Collection;
 
 /**
- * Provides String suggestions for auto-completion text fields based on user input.
+ * Provides String suggestions for autocompletion text fields based on user input.
  * <p>This callback fetches relevant String suggestions through a {@link SuggestionInteractor}
- * when users type in an auto-completion-enabled text field.
+ * when users type in an autocompletion-enabled text field.
  *
  * <p>Unlike {@link EntrySuggesterCallback} which provides full {@link Entry} objects,
  * this callback returns simple strings, making it suitable for simpler

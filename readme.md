@@ -22,16 +22,16 @@ This makes it easy to implement type-ahead suggestions while maintaining clean s
 
 This library provides the following components:
 - `SuggestionInteractor`: an abstract MVCI Interactor class specialized for suggestions handling
-  - fetches entries based on user input
-  - retrieves text suggestions
-  - manages model updates after suggestion selection
+  - fetches entries based on partial user input
+  - retrieves text autocompletion
+  - manages model updates after successful autocompletion
 - `Entry`: an interface representing data entities (such as POJOs) that can be used with 
     the suggestion system.
   - Supports composite primary keys
   - Provides description text for display
 - Suggestion Components:
   - `EntryConverter`: converts between `Entry` objects and their string representations.
-  - `EntrySelectionHandler`: handles the selection events from auto-completion textfield.
+  - `EntrySelectionHandler`: handles the selection events from autocompletion textfield.
   It uses the `SuggestionInteractor` to handle what should be done after the operation is completed.
   - `EntrySuggesterCallback`: a callback backed by the `SuggestionInteractor.fetchEntries(String)` method, 
   which retrieves entries based on a user's suggestion or partial input.
@@ -57,6 +57,8 @@ They have been repackaged and modified following [Clément Grennerat's post](htt
 TODO
 
 ## Example 1:
+
+TODO
 
 # Contributing
 

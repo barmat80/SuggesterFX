@@ -7,11 +7,11 @@ import com.maemlab.suggesterfx.mvci.SuggestionInteractor;
 import javafx.event.EventHandler;
 
 /**
- * Handles selection events from auto-completion text fields for {@link Entry} objects.
+ * Handles selection events from autocompletion text fields for {@link Entry} objects.
  * <p>This handler processes the selection of {@link Entry} suggestions and updates the underlying
  * {@link Model} through a {@link SuggestionInteractor}.
  *
- * <p>When a user selects a suggestion from the auto-completion list, this handler
+ * <p>When a user selects a suggestion from the autocompletion list, this handler
  * ensures that the selected {@link Entry} is properly processed and the model is updated
  * accordingly through the interactor.
  *

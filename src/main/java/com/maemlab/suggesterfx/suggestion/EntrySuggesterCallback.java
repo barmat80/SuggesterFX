@@ -10,12 +10,12 @@ import javafx.util.Callback;
 import java.util.Collection;
 
 /**
- * Provides {@link Entry} suggestions for auto-completion text fields based on user input.
+ * Provides {@link Entry} suggestions for autocompletion text fields based on user input.
  * <p>This callback fetches relevant {@link Entry} suggestions through a {@link SuggestionInteractor}
- * when users type in an auto-completion-enabled text field.
+ * when users type in an autocompletion-enabled text field.
  *
  * <p>The callback converts user input into a collection of matching {@link Entry} objects
- * that can be displayed as suggestions in the auto-completion popup.
+ * that can be displayed as suggestions in the autocompletion popup.
  *
  * @param <M> The type of {@link Model} this handler uses
  *
