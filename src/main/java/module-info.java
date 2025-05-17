@@ -1,6 +1,6 @@
 module SuggesterFX {
     requires javafx.controls;
-    requires com.maemlab.mvcifx;
+    requires mvciFX;
 
     exports com.maemlab.suggesterfx.entries;
     exports com.maemlab.suggesterfx.mvci;
